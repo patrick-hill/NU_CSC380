@@ -4,19 +4,20 @@
     <list default="true" id="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" name="Default" comment="" />
     <ignored path="hill.patrick_distributed_System.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Server.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374030363201" ignored="false" />
+    <file path="/Server.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374121345616" ignored="false" />
     <file path="/HelloClient.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1373415494744" ignored="false" />
     <file path="/HelloServer.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1373415746597" ignored="false" />
     <file path="/mainListener.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1373429909841" ignored="false" />
-    <file path="/Client.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374023615114" ignored="false" />
+    <file path="/Client.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374119923007" ignored="false" />
     <file path="/fragment.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374022043936" ignored="false" />
-    <file path="$PROJECT_DIR$/../ReflectionExcercise/src/ReflectionActivity.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374031980765" ignored="false" />
-    <file path="/ReflectionActivity.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374031964270" ignored="false" />
+    <file path="$PROJECT_DIR$/../ReflectionExcercise/src/ReflectionActivity.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374117926662" ignored="false" />
+    <file path="/ReflectionActivity.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374114873938" ignored="false" />
     <file path="/MathServer.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1373736795512" ignored="false" />
     <file path="/Math.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1373736956082" ignored="false" />
     <file path="/IntTest.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374024249750" ignored="false" />
-    <file path="/ChatBot.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374104312190" ignored="false" />
-    <file path="$PROJECT_DIR$/../../CSC230/src/ChatBot.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374104312190" ignored="false" />
+    <file path="/ChatBot.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374111107869" ignored="false" />
+    <file path="$PROJECT_DIR$/../../CSC230/src/ChatBot.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374111107869" ignored="false" />
+    <file path="/Catch Statement Body.txt.ft" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374120054514" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +32,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -68,6 +68,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -82,24 +83,13 @@
           <file leaf-file-name="Server.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/MathLogic/Server.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="103" column="12" selection-start="3927" selection-end="3964" vertical-scroll-proportion="0.4366864">
+                <state line="162" column="64" selection-start="5776" selection-end="5776" vertical-scroll-proportion="0.6396396">
                   <folding>
-                    <element signature="imports" expanded="true" />
                     <element signature="method#main#0;class#Server#0" expanded="false" />
                     <element signature="method#ObjectServer#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-                    <element signature="method#run#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-                    <element signature="method#readString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-                    <element signature="method#getClassesInPackage#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                    <element signature="method#startConnection#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                    <element signature="method#makeClassMethodList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IntTest.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/MathLogic/IntTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="11" column="19" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -111,10 +101,8 @@
           <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/MathLogic/Client.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="74" column="32" selection-start="2585" selection-end="2585" vertical-scroll-proportion="0.7785548">
-                  <folding>
-                    <element signature="method#ClientSide#0;class#ClientSide#0;class#Client#0" expanded="false" />
-                  </folding>
+                <state line="65" column="31" selection-start="2310" selection-end="2310" vertical-scroll-proportion="0.18378378">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -139,8 +127,12 @@
         <option value="$PROJECT_DIR$/src/MathLogic/mainServerListener.java" />
         <option value="$PROJECT_DIR$/src/MathLogic/MathServer.java" />
         <option value="$PROJECT_DIR$/src/MathLogic/Math.java" />
-        <option value="$PROJECT_DIR$/src/MathLogic/Client.java" />
         <option value="$PROJECT_DIR$/src/MathLogic/IntTest.java" />
+        <option value="$PROJECT_DIR$/src/MathLogic/old/MyClass.java" />
+        <option value="$PROJECT_DIR$/src/MathLogic/MyClass.java" />
+        <option value="$PROJECT_DIR$/src/MathLogic/MyTest.java" />
+        <option value="$PROJECT_DIR$/src/MathLogic/MyParam.java" />
+        <option value="$PROJECT_DIR$/src/MathLogic/Client.java" />
         <option value="$PROJECT_DIR$/src/MathLogic/Server.java" />
       </list>
     </option>
@@ -207,7 +199,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -273,7 +265,7 @@
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="editing.templates" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ReflectionExcercise" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -290,7 +282,7 @@
       <recent name="D:\Software Development\Java\IntelliJ Projects\CSC380\hill.patrick_distributed_System\src\client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Client">
     <configuration default="false" name="Server" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -309,7 +301,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="hill.patrick_distributed_System" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -488,7 +486,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -496,25 +494,25 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39954853" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.4994664" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1307364" sideWeight="0.67155755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3227991" sideWeight="0.50048685" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1307364" sideWeight="0.6704289" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.50053364" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844242" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33025405" sideWeight="0.49951315" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -583,25 +581,21 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/MathLogic/Client.java">
+    <entry file="file://$PROJECT_DIR$/src/MathLogic/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="16" selection-start="1691" selection-end="1691" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="method#ClientSide#0;class#ClientSide#0;class#Client#0" expanded="false" />
+            <element signature="method#main#0;class#Server#0" expanded="false" />
+            <element signature="method#ObjectServer#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#startConnection#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#makeClassMethodList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MathLogic/old/MathServer.java">
+    <entry file="file://$PROJECT_DIR$/src/MathLogic/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="1776" selection-end="1776" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MathLogic/old/Math.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="27" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0">
+        <state line="17" column="43" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -610,12 +604,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#main#0;class#Server#0" expanded="false" />
             <element signature="method#ObjectServer#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#run#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#readString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#getClassesInPackage#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#startConnection#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#makeClassMethodList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -623,32 +615,7 @@
     <entry file="file://$PROJECT_DIR$/src/MathLogic/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="43" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#ClientSide#0;class#ClientSide#0;class#Client#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MathLogic/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#main#0;class#Server#0" expanded="false" />
-            <element signature="method#ObjectServer#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#run#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#readString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#getClassesInPackage#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MathLogic/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="43" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#ClientSide#0;class#ClientSide#0;class#Client#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -674,44 +641,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MathLogic/old/Math.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="27" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0">
+        <state line="19" column="27" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MathLogic/MyParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="5" selection-start="279" selection-end="279" vertical-scroll-proportion="0.2767442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MathLogic/MyTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="5" selection-start="352" selection-end="352" vertical-scroll-proportion="0.37558138">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MathLogic/MyClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="5" selection-start="274" selection-end="274" vertical-scroll-proportion="0.2372093">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MathLogic/old/MathServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="28" selection-start="1793" selection-end="1805" vertical-scroll-proportion="0.14234017">
+        <state line="56" column="28" selection-start="1813" selection-end="1813" vertical-scroll-proportion="1.8275862">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MathLogic/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="32" selection-start="2585" selection-end="2585" vertical-scroll-proportion="0.7785548">
-          <folding>
-            <element signature="method#ClientSide#0;class#ClientSide#0;class#Client#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MathLogic/IntTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="19" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
+        <state line="65" column="31" selection-start="2310" selection-end="2310" vertical-scroll-proportion="0.18378378">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MathLogic/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="12" selection-start="3927" selection-end="3964" vertical-scroll-proportion="0.4366864">
+        <state line="162" column="64" selection-start="5776" selection-end="5776" vertical-scroll-proportion="0.6396396">
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#main#0;class#Server#0" expanded="false" />
             <element signature="method#ObjectServer#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#run#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#readString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#getClassesInPackage#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#startConnection#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#makeClassMethodList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
           </folding>
         </state>
       </provider>

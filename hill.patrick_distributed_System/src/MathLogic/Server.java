@@ -3,7 +3,6 @@ package MathLogic;
 import MathLogic.old.MathServer;
 
 import java.io.*;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -29,7 +28,7 @@ public class Server {
             while (true) {
                 if(ss.isBound()) {
                     count ++;
-                    new MathServer(ss.accept(), count).run();
+                    new ObjectServer(ss.accept(), count).run();
                 }
             }
         } catch (IOException e) {
@@ -37,7 +36,7 @@ public class Server {
         }
     }
 
-    protected class ObjectServer implements Runnable {
+    protected static class ObjectServer implements Runnable {
         private Socket s;
         private BufferedReader br;
         private PrintWriter serverWrite;
@@ -51,102 +50,156 @@ public class Server {
 
         @Override
         public void run() {
-            try {
-                startConnection();
-            } catch (IOException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (InstantiationException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
+            startConnection();
         }
 
-        public void startConnection() throws IOException, IllegalAccessException, InstantiationException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
+        public void startConnection() {
             // Get the connection all setup and working
-            sOut = s.getOutputStream();
-            br = new BufferedReader( new InputStreamReader( s.getInputStream()));
-            serverWrite = new PrintWriter(sOut, true);
-
-            // Get classname from client
-            String clientClass = readString();
-            c = getClassInstance(clientClass);          // Singleton Pattern
-
-            // Get & Send constructor list to client
-            Object con = c.getConstructor().newInstance();
-
-            // Get class methods
-            Method[] classMethods = getMethodsFromClass(c);
-            // Send method list to client
-            String methodList = makeClassMethodList(classMethods);
-            sendString(methodList);
-
-            // Get method index from client
-            Method m = classMethods[Integer.parseInt(readString())];
-
-            // Client sends params for chosen method
-            String temp = readString();         // schema param1,param2
-            String clientParams[] = temp.split(",");
-
-            // Create a Class array to hold clients class parameters...
-            Class params[] = new Class[clientParams.length];
-            for(int i=0;i<clientParams.length;i++)
-                    params[i] = getClassInstance(clientParams[i]);
-
-            // Send Class methods to client
-            Object[] cons = new Object[params.length];
-
-//	        Class stringClass = Class.forName("java.lang.String");
-//	        Class intClass = Class.forName("java.lang.Integer");
-//	        Class[] typeClasses = new Class[2];
-//	        typeClasses[0] = stringClass;
-//	        typeClasses[1] = intClass;
-//
-//	        Constructor constructor= c.getDeclaredConstructor(typeClasses);
-//					String p1 = "sean";
-//	        Integer p2 = 1;
-//	        Object[] objects = new Object[] {p1, p2};
-
-
-//	        Object obj = constructor.newInstance(objects);
-
-            Annotation[] as = c.getAnnotations();
-            Method[][] paramMethodArray = new Method[params.length][params.length];
-            String[] paramMethodString = new String[params.length];
-
-            for(int i=0;i<params.length;i++) {
-                cons[i] = getClassConstructor(params[i]);
-                paramMethodArray[i] = getMethodsFromClass(params[i]);
-                paramMethodString[i] = makeClassMethodList(paramMethodArray[i]);
+            try {
+                sOut = s.getOutputStream();
+                br = new BufferedReader( new InputStreamReader( s.getInputStream()));
+                serverWrite = new PrintWriter(sOut, true);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            // Invoke Clients Method
-            Method m2 = c.getDeclaredMethod(m.getName(),
-                    m.getParameterTypes());
-            Object answer = m2.invoke(con, params); // method must accept an array of Objects
-
-            // Send client the final response before closing connection
-            serverWrite.println(answer.toString());
+            // Client Class Loading
+//            Class c = clientClassLoading();
+            clientConstructorLoading();
         }
 
-        private String readString() throws IOException {
-            return br.readLine();
+        private Class clientClassLoading() {
+            return getClassInstance(readString());
+        }
+        private void clientConstructorLoading() {
+            Class c = getClassInstance(readString());
+//            String test = readString();
+//            System.out.println("String is: " + test);
+//            Class c = Class.forName(readString());
+            Constructor cons[] = c.getConstructors();
+            int count = 0;
+            if(cons.length == 1)
+                sendString((count++) + ": " + cons[0].toString());
+            else {
+                String conList = "";
+                int count2 = 0;
+                for (Constructor c1 : cons)
+                    conList += (count2++) + ": " +c1.toString() + "\n";
+                // Send constructors
+                sendString(conList);
+            }
+            int conIndex = Integer.parseInt(readString());
+            int conParams = cons[conIndex].getParameterTypes().length;
+            Object con = null;
+            if(conParams == 0) {
+                sendString("skip");
+                try {
+                    con = c.getConstructor().newInstance();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                sendString("types");
+                Class conParamClasses[] = new Class[conParams];
+                // Get class names for con parameters.....
+                String temp = readString();     // schema java.lang.String,java.lang.Integer
+                String names[] = temp.split(",");
+                for (int i=0;i<conParams;i++) {
+                    conParamClasses[i] = getClassInstance(names[i]);
+                }
+                // parameter types from client
+                temp = readString();    // schema String:A String,Integer:666
+                String paramTypes[] = temp.split(",");
+
+                Object types[] = new Object[paramTypes.length];
+
+                for (int i=0;i<paramTypes.length;i++) {         // Only allows Strings & Ints
+                    String t[] = paramTypes[i].split(":");
+                    switch(t[0]) {
+                        case "Integer":
+                            types[i] = Integer.parseInt(t[1]);
+                            break;
+                        default:
+                            types[i] = t[1];
+                            break;
+                    }
+                }
+                try {
+                    con = c.getConstructor(conParamClasses).newInstance(types);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                }
+            }
+            // call methods now.... jesus this is a pain in the ass....
+
+            Method allMethods[] = c.getDeclaredMethods();
+            String mSend = "";
+            count = 0;
+            for (Method m : allMethods){
+                mSend += (count++) + ": " + m.getName();
+            }
+            sendString(mSend);
+            int userMethod = Integer.parseInt(readString());
+            Method m = allMethods[userMethod];
+            Method toInvoke = null;
+
+            // method parameters .....
+            Class k[] = m.getParameterTypes();
+
+            // 10:30... time to more on to other classes.....
+
+            // again, too much work for too little a time frame!
+
+            try {
+                toInvoke = c.getDeclaredMethod(allMethods[userMethod].getName(), // Method params go here);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+            Class returnType = toInvoke.getReturnType();
+            try {
+                toInvoke.invoke(con);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            sendString(returnType.toString());
+        }
+
+        private String readString() {
+            String tmp = "";
+            try {
+                tmp = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return tmp;
         }
         private void sendString(String msg) {
             serverWrite.println(msg);
             serverWrite.flush();
         }
-        private Class getClassInstance(String clientClass) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        private Class getClassInstance(String clientClass) {
             if(c == null) {
-                c = Class.forName(clientClass);
-//                c.newInstance();
+                try {
+                    c = Class.forName(clientClass);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
+            System.out.println("Made class: " + c.getName());
             return c;
         }
         private String makeClassConstructorList(Class c) {
@@ -155,11 +208,33 @@ public class Server {
                 conList += con.toString();
             return conList;
         }
-        private Object getClassConstructor(Class c) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-            return c.getConstructor().newInstance();
+        private Object getClassConstructor(Class c) {
+            Object tmp = null;
+            try {
+                tmp = c.getConstructor().newInstance();
+            } catch (InstantiationException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+            return tmp;
         }
-        private Method[] getMethodsFromClass(Class c) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-            Object con = c.getConstructor().newInstance();
+        private Method[] getMethodsFromClass(Class c) {
+            try {
+                Object con = c.getConstructor().newInstance();
+            } catch (InstantiationException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
             return c.getDeclaredMethods();
         }
         private String makeClassMethodList(Method[] classMethods) {
@@ -167,23 +242,6 @@ public class Server {
             for(Method m : classMethods)
                 methodList += m + ", ";
             return methodList;
-        }
-        public List getClassesInPackage(String packageName) throws Exception {
-            URL packageUrl = this.getClass().getClassLoader().getResource(packageName.replace(".", "/"));
-            List allClasses = new ArrayList();
-//            if(packageUrl != null) {
-//                Path packagePath = Paths.get(packageUrl.toURI());
-//                if(Files.isDirectory(packagePath)) {
-//                    try(DirectoryStream ds = Files.newDirectoryStream(packagePath, "*.class")) {
-//                        for(Path d : ds) {
-//                            allClasses.add(Class.forName(packageName + "." +
-//                                    d.getFileName().toString().replace(".class", "")));
-//                        }
-//                    }
-//                }
-//                return allClasses;
-//            }
-            return null;
         }
     }
 }
