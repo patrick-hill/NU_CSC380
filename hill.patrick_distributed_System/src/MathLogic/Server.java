@@ -101,6 +101,21 @@ public class Server {
 
             // Send Class methods to client
             Object[] cons = new Object[params.length];
+
+//	        Class stringClass = Class.forName("java.lang.String");
+//	        Class intClass = Class.forName("java.lang.Integer");
+//	        Class[] typeClasses = new Class[2];
+//	        typeClasses[0] = stringClass;
+//	        typeClasses[1] = intClass;
+//
+//	        Constructor constructor= c.getDeclaredConstructor(typeClasses);
+//					String p1 = "sean";
+//	        Integer p2 = 1;
+//	        Object[] objects = new Object[] {p1, p2};
+
+
+//	        Object obj = constructor.newInstance(objects);
+
             Annotation[] as = c.getAnnotations();
             Method[][] paramMethodArray = new Method[params.length][params.length];
             String[] paramMethodString = new String[params.length];
