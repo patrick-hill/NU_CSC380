@@ -54,6 +54,7 @@ public class Client {
                 case "classPaths":
                     // Prompt & send user's classname
                     System.out.println("Enter the full classpath of the class...");
+                    System.out.println("i.e. : MathLogic.MyClass");
                     String className = scan.nextLine();
                     sendString(className);  // no error handling !!!
                     break;
@@ -82,10 +83,12 @@ public class Client {
                     break;
                 case "methodTypes":
                     System.out.println("Enter the full classpath of the parameter...");
+                    System.out.println("i.e.: MathLogic.MyParam");
                     sendString(scan.nextLine());
                     break;
                 case "final":
                     isRunning = false;
+                    System.out.println("AAAAAAAAAAAAAAAND DONE!!!!!!");
                     String answer = readString();
                     System.out.println("Method return toString() is:");
                     System.out.println(answer);

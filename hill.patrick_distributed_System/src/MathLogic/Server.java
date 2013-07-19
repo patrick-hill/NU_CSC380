@@ -166,16 +166,32 @@ public class Server {
                     e.printStackTrace();
                 }
             }
-            // make the return type class.
-            Class returnType = toInvoke.getReturnType();
+            // Run the method
+            Object mParams[] = new Object[1];
+            mParams[0] = methodParamClass;
             try {
-                toInvoke.invoke(con);
+                toInvoke.invoke(con, mParams);          // this works just fine !!!!!
+            } catch (IllegalAccessException e) {        // but no return object ... wtf
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+
+            Object returnType = null;
+            try {
+                returnType = toInvoke.invoke(con, mParams);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
-            sendString(returnType.toString());
+
+            if(returnType == null)
+                System.out.println("NULLLLLLLLLL");
+            else
+                System.out.println(" it works mofo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            sendString("final");
+            sendString("sean");
             return m;
         }
 

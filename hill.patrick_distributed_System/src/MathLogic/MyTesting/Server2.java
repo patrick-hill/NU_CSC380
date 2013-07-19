@@ -107,7 +107,7 @@ public class Server2 {
             // make the return type class.
             Class returnType = toInvoke.getReturnType();
 
-            
+
             try {
                 toInvoke.invoke(con);
             } catch (IllegalAccessException e) {
