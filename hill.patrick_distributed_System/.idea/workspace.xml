@@ -4,20 +4,21 @@
     <list default="true" id="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" name="Default" comment="" />
     <ignored path="hill.patrick_distributed_System.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Server.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374121345616" ignored="false" />
+    <file path="/Server.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374204159128" ignored="false" />
     <file path="/HelloClient.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1373415494744" ignored="false" />
     <file path="/HelloServer.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1373415746597" ignored="false" />
     <file path="/mainListener.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1373429909841" ignored="false" />
-    <file path="/Client.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374119923007" ignored="false" />
+    <file path="/Client.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374201571327" ignored="false" />
     <file path="/fragment.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374022043936" ignored="false" />
-    <file path="$PROJECT_DIR$/../ReflectionExcercise/src/ReflectionActivity.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374117926662" ignored="false" />
-    <file path="/ReflectionActivity.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374114873938" ignored="false" />
+    <file path="$PROJECT_DIR$/../ReflectionExcercise/src/ReflectionActivity.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374202631814" ignored="false" />
+    <file path="/ReflectionActivity.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374201437236" ignored="false" />
     <file path="/MathServer.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1373736795512" ignored="false" />
     <file path="/Math.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1373736956082" ignored="false" />
     <file path="/IntTest.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374024249750" ignored="false" />
     <file path="/ChatBot.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374111107869" ignored="false" />
     <file path="$PROJECT_DIR$/../../CSC230/src/ChatBot.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374111107869" ignored="false" />
     <file path="/Catch Statement Body.txt.ft" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374120054514" ignored="false" />
+    <file path="/Server2.java" changelist="90d56ba4-a7ea-44ce-b685-fe8e9683dd1f" time="1374205482696" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,15 +81,43 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="Server.java" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="Server.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/MathLogic/Server.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="162" column="64" selection-start="5776" selection-end="5776" vertical-scroll-proportion="0.6396396">
+                <state line="294" column="5" selection-start="402" selection-end="11210" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="method#main#0;class#Server#0" expanded="false" />
                     <element signature="method#ObjectServer#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-                    <element signature="method#startConnection#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                    <element signature="method#run#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                    <element signature="method#clientClassLoading#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                    <element signature="method#readString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                    <element signature="method#sendString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                    <element signature="method#getClassInstance#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                    <element signature="method#makeClassConstructorList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                    <element signature="method#getClassConstructor#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                    <element signature="method#getMethodsFromClass#0;class#ObjectServer#0;class#Server#0" expanded="false" />
                     <element signature="method#makeClassMethodList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Server2.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/MathLogic/MyTesting/Server2.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="109" column="12" selection-start="3957" selection-end="3957" vertical-scroll-proportion="0.57194245">
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="method#main#0;class#Server2#0" expanded="false" />
+                    <element signature="method#run#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+                    <element signature="method#clientConstructorParamTypeLoading#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+                    <element signature="method#readString#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+                    <element signature="method#sendString#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+                    <element signature="method#getClassInstance#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+                    <element signature="method#makeClassConstructorList#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+                    <element signature="method#getClassConstructor#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+                    <element signature="method#getMethodsFromClass#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+                    <element signature="method#makeClassMethodList#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -101,8 +130,12 @@
           <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/MathLogic/Client.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="65" column="31" selection-start="2310" selection-end="2310" vertical-scroll-proportion="0.18378378">
-                  <folding />
+                <state line="84" column="48" selection-start="3213" selection-end="3213" vertical-scroll-proportion="1.0953237">
+                  <folding>
+                    <element signature="docComment;class#Client#0" expanded="false" />
+                    <element signature="method#readString#0;class#ClientSide#0;class#Client#0" expanded="false" />
+                    <element signature="method#sendString#0;class#ClientSide#0;class#Client#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -134,6 +167,7 @@
         <option value="$PROJECT_DIR$/src/MathLogic/MyParam.java" />
         <option value="$PROJECT_DIR$/src/MathLogic/Client.java" />
         <option value="$PROJECT_DIR$/src/MathLogic/Server.java" />
+        <option value="$PROJECT_DIR$/src/MathLogic/MyTesting/Server2.java" />
       </list>
     </option>
   </component>
@@ -214,8 +248,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -252,6 +286,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hill.patrick_distributed_System" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hill.patrick_distributed_System" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MathLogic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyTesting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -265,7 +321,7 @@
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="editing.templates" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ReflectionExcercise" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -486,12 +542,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844242" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39954853" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -500,19 +557,18 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.4994664" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844242" sideWeight="0.4994664" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1307364" sideWeight="0.6704289" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.50053364" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1307364" sideWeight="0.67155755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32844242" sideWeight="0.50053364" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844242" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -587,7 +643,14 @@
           <folding>
             <element signature="method#main#0;class#Server#0" expanded="false" />
             <element signature="method#ObjectServer#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#startConnection#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#run#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#clientClassLoading#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#readString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#sendString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#getClassInstance#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#makeClassConstructorList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#getClassConstructor#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#getMethodsFromClass#0;class#ObjectServer#0;class#Server#0" expanded="false" />
             <element signature="method#makeClassMethodList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
           </folding>
         </state>
@@ -596,7 +659,11 @@
     <entry file="file://$PROJECT_DIR$/src/MathLogic/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="43" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="docComment;class#Client#0" expanded="false" />
+            <element signature="method#readString#0;class#ClientSide#0;class#Client#0" expanded="false" />
+            <element signature="method#sendString#0;class#ClientSide#0;class#Client#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -606,7 +673,14 @@
           <folding>
             <element signature="method#main#0;class#Server#0" expanded="false" />
             <element signature="method#ObjectServer#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#startConnection#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#run#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#clientClassLoading#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#readString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#sendString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#getClassInstance#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#makeClassConstructorList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#getClassConstructor#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#getMethodsFromClass#0;class#ObjectServer#0;class#Server#0" expanded="false" />
             <element signature="method#makeClassMethodList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
           </folding>
         </state>
@@ -615,7 +689,11 @@
     <entry file="file://$PROJECT_DIR$/src/MathLogic/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="43" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="docComment;class#Client#0" expanded="false" />
+            <element signature="method#readString#0;class#ClientSide#0;class#Client#0" expanded="false" />
+            <element signature="method#sendString#0;class#ClientSide#0;class#Client#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -667,26 +745,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MathLogic/old/MathServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="28" selection-start="1813" selection-end="1813" vertical-scroll-proportion="1.8275862">
-          <folding />
-        </state>
+        <state line="56" column="28" selection-start="1813" selection-end="1813" vertical-scroll-proportion="1.8275862" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MathLogic/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="31" selection-start="2310" selection-end="2310" vertical-scroll-proportion="0.18378378">
-          <folding />
+        <state line="84" column="48" selection-start="3213" selection-end="3213" vertical-scroll-proportion="1.0953237">
+          <folding>
+            <element signature="docComment;class#Client#0" expanded="false" />
+            <element signature="method#readString#0;class#ClientSide#0;class#Client#0" expanded="false" />
+            <element signature="method#sendString#0;class#ClientSide#0;class#Client#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MathLogic/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="64" selection-start="5776" selection-end="5776" vertical-scroll-proportion="0.6396396">
+        <state line="294" column="5" selection-start="402" selection-end="11210" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="method#main#0;class#Server#0" expanded="false" />
             <element signature="method#ObjectServer#0;class#ObjectServer#0;class#Server#0" expanded="false" />
-            <element signature="method#startConnection#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#run#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#clientClassLoading#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#readString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#sendString#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#getClassInstance#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#makeClassConstructorList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#getClassConstructor#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+            <element signature="method#getMethodsFromClass#0;class#ObjectServer#0;class#Server#0" expanded="false" />
             <element signature="method#makeClassMethodList#0;class#ObjectServer#0;class#Server#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MathLogic/MyTesting/Server2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="12" selection-start="3957" selection-end="3957" vertical-scroll-proportion="0.57194245">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#main#0;class#Server2#0" expanded="false" />
+            <element signature="method#run#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+            <element signature="method#clientConstructorParamTypeLoading#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+            <element signature="method#readString#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+            <element signature="method#sendString#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+            <element signature="method#getClassInstance#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+            <element signature="method#makeClassConstructorList#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+            <element signature="method#getClassConstructor#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+            <element signature="method#getMethodsFromClass#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
+            <element signature="method#makeClassMethodList#0;class#ObjectServer#0;class#Server2#0" expanded="false" />
           </folding>
         </state>
       </provider>

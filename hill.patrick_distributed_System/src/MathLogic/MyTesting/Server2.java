@@ -1,6 +1,4 @@
-package MathLogic;
-
-import MathLogic.old.MathServer;
+package MathLogic.MyTesting;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
@@ -8,32 +6,18 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.URL;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
+ * Created with IntelliJ IDEA.
  * User: Patrick
- * Date: 7/9/13
- * Time: 9:03 PM
+ * Date: 7/18/13
+ * Time: 9:31 PM
+ * To change this template use File | Settings | File Templates.
  */
-public class Server {
+public class Server2 {
+
     public static void main(String[] args) {
-        int count = 0;
-
-        try {
-            ServerSocket ss = new ServerSocket(8080);
-
-            while (true) {
-                if(ss.isBound()) {
-                    count ++;
-                    new ObjectServer(ss.accept(), count).run();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new ObjectServer().run();
     }
 
     protected static class ObjectServer implements Runnable {
@@ -42,77 +26,39 @@ public class Server {
         private PrintWriter serverWrite;
         private OutputStream sOut;
 
-        public ObjectServer(Socket s, int connectionCount) {
-            this.s = s;
-            System.out.println("Server #: "+connectionCount + " has been started.");
-        }
-
         @Override
         public void run() {
             startConnection();
         }
 
         public void startConnection() {
-            try {
-                sOut = s.getOutputStream();
-                br = new BufferedReader( new InputStreamReader( s.getInputStream()));
-                serverWrite = new PrintWriter(sOut, true);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
             // Get Class
             Class c = clientClassLoading();
             // Get Constructor
             Object con = clientConstructorLoading(c);
             // Get Method to invoke
             Method m = clientMethodLoading(c, con);
-
         }
         private Class clientClassLoading() {
-            sendString("classPaths");
-
-            return getClassInstance(readString());
+            return getClassInstance("MathLogic.MyClass");
         }
         private Object clientConstructorLoading(Class c) {
-            sendString("constructors");
-
             Constructor cons[] = c.getConstructors();
-            String conList = "";
-            int count = 0;
-            for (Constructor c1 : cons)
-                conList += (count++) + ": " +c1.toString() + "\n";
-            sendString(conList);
-            int conIndex = Integer.parseInt(readString());
-            int conParams = cons[conIndex].getParameterTypes().length;
-            Object con = null;
-            if(conParams == 0) {
-                try {
-                    con = c.getConstructor().newInstance();
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                }
-            }
-            else {
-                con = clientConstructorParamTypeLoading(c, conParams);
-            }
+            int conParams = cons[0].getParameterTypes().length;
+            Object con =  clientConstructorParamTypeLoading(c, conParams);
             return con;
         }
         private Object clientConstructorParamTypeLoading(Class c, int conParams) {
-            sendString("conTypes");
-
             Class conParamClasses[] = new Class[conParams];
-            String names[] = readString().split(",");   // schema java.lang.String,java.lang.Integer
+//            String names[] = readString().split(",");   // schema java.lang.String,java.lang.Integer
+            String names[] = new String[0];
+            names[0] = "MathLogic.MyParam";
             for (int i=0;i<conParams;i++)
                 conParamClasses[i] = getClassInstance(names[i]);
             // parameter types from client
-            String paramTypes[] = readString().split(",");  // schema String:A String,Integer:666
+//            String paramTypes[] = readString().split(",");  // schema String:A String,Integer:666
+            String paramTypes[] = new String[0];
+            paramTypes[0] = "java";
             Object types[] = new Object[paramTypes.length];
             for (int i=0;i<paramTypes.length;i++) {         // Only allows Strings & Ints
                 String t[] = paramTypes[i].split(":");
@@ -137,21 +83,13 @@ public class Server {
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             }
-        return con;
+            return con;
         }
 
         private Method clientMethodLoading(Class c, Object con) {
-            sendString("methods");
 
             Method allMethods[] = c.getDeclaredMethods();
-            String mSend = "";
-            int count = 0;
-            for (Method m : allMethods){
-                mSend += (count++) + ": " + m.getName();
-            }
-            sendString(mSend);
-            int userMethod = Integer.parseInt(readString());
-            Method m = allMethods[userMethod];
+            Method m = allMethods[0];
             Method toInvoke = null;
 
             // method parameters .....
@@ -161,13 +99,15 @@ public class Server {
                 methodParamClass = clientMethodParamLoading(k.length);
             else {
                 try {
-                    toInvoke = c.getDeclaredMethod(allMethods[userMethod].getName(), methodParamClass);
+                    toInvoke = c.getDeclaredMethod(allMethods[0].getName(), methodParamClass);
                 } catch (NoSuchMethodException e) {
                     e.printStackTrace();
                 }
             }
             // make the return type class.
             Class returnType = toInvoke.getReturnType();
+
+            
             try {
                 toInvoke.invoke(con);
             } catch (IllegalAccessException e) {
@@ -180,9 +120,8 @@ public class Server {
         }
 
         private Class clientMethodParamLoading(int methodParams) {
-            sendString("methodTypes");
 
-            Class c = getClassInstance(readString());
+            Class c = getClassInstance("MathLogic.MyParam");
 //            // Re-use of constructor parameter loading..... :(
 //            Class methodParamClasses[] = new Class[methodParams];
 //            String names[] = readString().split(",");   // schema java.lang.String,java.lang.Integer

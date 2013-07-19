@@ -21,6 +21,11 @@ public class Client {
     public static class ClientSide {
         Socket s;
         Scanner scan = new Scanner(System.in);
+        OutputStream sOut;
+        InputStream sIn;
+        PrintWriter sWrite;
+        BufferedReader br;
+        boolean isRunning = true;
 
         public ClientSide() {
             try {
@@ -31,80 +36,83 @@ public class Client {
         }
 
         private void connectToServer() throws IOException {
-            // Connect to the Server
             System.out.println("Connecting to the server...");
             s = new Socket("localhost", 8080);
-            OutputStream sOut = s.getOutputStream();
-            InputStream sIn = s.getInputStream();
-            PrintWriter sWrite = new PrintWriter(sOut, true);
-            BufferedReader br = new BufferedReader( new InputStreamReader(sIn));
+            sOut = s.getOutputStream();
+            sIn = s.getInputStream();
+            sWrite = new PrintWriter(sOut, true);
+            br = new BufferedReader( new InputStreamReader(sIn));
             System.out.println("Connected to server");
 
-            // Prompt & send user's classname
-            System.out.println("Enter the full classpath you would like to call...");
-            String className = scan.nextLine();
-            sWrite.println(className);  // no error handling !!!
-            sWrite.flush();
-
-            // Get constructor list
-            String cons = br.readLine();
-            System.out.println("Enter the index of the desired constructor...");
-            System.out.println(cons);
-            sWrite.println(scan.nextLine());
-            sWrite.flush();
-
-            // choice logic
-            String cmd = br.readLine();
-            if(cmd.equalsIgnoreCase("types")) {
-                System.out.println("Enter the constructor parameter types comma delimited...");
-                System.out.println("i.e. : java.lang.String,java.lang.Integer");
-                sWrite.println(scan.nextLine());
-                sWrite.flush();
-                System.out.println("enter the parameter types and values as follows comma delimited....");
-                System.out.println("i.e.: String:A,Integer:66");
-                sWrite.println(scan.nextLine());
-                sWrite.flush();
+            while(isRunning) {
+                serverClientChatter();
             }
-            // else just skip this :)
+        }
+        private void serverClientChatter() {
+            String server = readString();
+            switch(server) {
+                case "classPaths":
+                    // Prompt & send user's classname
+                    System.out.println("Enter the full classpath of the class...");
+                    String className = scan.nextLine();
+                    sendString(className);  // no error handling !!!
+                    break;
+                case "constructors":
+                    // Get constructor list
+                    String cons = readString();
+                    System.out.println("Enter the index of the desired constructor...");
+                    System.out.println(cons);
+                    sendString(scan.nextLine());
+                    break;
+                case "conTypes":
+                    System.out.println("Enter the constructor parameter types comma delimited...");
+                    System.out.println("i.e. : java.lang.String,java.lang.Integer");
+                    sendString(scan.nextLine());
+                    System.out.println("enter the parameter types and values as follows comma delimited....");
+                    System.out.println("i.e.: String:A,Integer:66");
+                    sendString(scan.nextLine());
+                    break;
+                case "methods":
+                    String methodList = readString();
+                    System.out.println("Received Method List...");
+                    System.out.println(methodList);
+                    // Have user prompt for desired method...
+                    System.out.println("Enter the # corresponding to the method you would like to invoke");
+                    sendString(scan.nextLine());
+                    break;
+                case "methodTypes":
+                    System.out.println("Enter the full classpath of the parameter...");
+                    sendString(scan.nextLine());
+                    break;
+                case "final":
+                    isRunning = false;
+                    String answer = readString();
+                    System.out.println("Method return toString() is:");
+                    System.out.println(answer);
 
-            // Get method list from server
-            String methodList = br.readLine();
-            System.out.println("Received Method List...");
-            System.out.println(methodList);
-//            String methods[] = methodList.split(", ");
-//            System.out.println("Server replied with: ");
-//            int count = 0;
-//            for (String str : methods) // {
-//                System.out.println("#"+(count++)+": "+str);
-//                count++;
-//            }
-
-            // Have user prompt for desired method...
-            System.out.println("Enter the # corresponding to the method you would like to invoke");
-            String userPick = scan.nextLine();
-            sWrite.println(userPick);
+                    try {
+                        s.shutdownInput();
+                        s.shutdownOutput();
+                        s.close();
+                        scan.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
+        }
+        private String readString() {
+            String temp = "";
+            try {
+                temp =  br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return temp;
+        }
+        private void sendString(String s) {
+            sWrite.println(s);
             sWrite.flush();
-
-            // Get return type back
-            String answer = br.readLine();
-            System.out.println("Method return toString() is:");
-            System.out.println(answer);
-
-
-            // User enters classpath for param objects
-//            System.out.println("Method Parameters: Enter the classpath for each param...");
-//            System.out.println("i.e.: Math.Logic,Math.Resources.Integer,etc \n");
-//            String userParams = scan.nextLine();
-//            sWrite.println(userParams);
-//            sWrite.flush();
-
-            // read final answer from the server
-//            String answer = br.readLine();
-//            System.out.println("Server Replied: " + answer);
-            s.shutdownInput();
-            s.shutdownOutput();
-            s.close();
-            scan.close();
         }
     }
 }
