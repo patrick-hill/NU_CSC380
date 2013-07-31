@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<soap:Envelope>
+    xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
+    soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+    <soap:Body xmlns:r="http://localhost:8080/ordering">
+        <r:RestaurantResponse>
+            <r:restaurant>
+                <r:id>1</r:id>
+                <r:name>Murphy's Bar and Grill</r:name>
+            </r:restaurant>
+            <r:restaurant>
+                <r:id>2</r:id>
+                <r:name>Dat Great Eating Place</r:name>
+            </r:restaurant>
+        </r:RestaurantResponse>
+    </soap:Body>
+</soap:Envelope>
