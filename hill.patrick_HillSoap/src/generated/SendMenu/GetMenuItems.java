@@ -1,24 +1,22 @@
 
-package generatedRest;
+package generated.SendMenu;
 
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for menuItemsType complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="menuItemsType">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="menuItem" type="{}menuItemType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://localhost:8080/restaurants}menuItems" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,40 +26,42 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "menuItemsType", propOrder = {
-    "menuItem"
+@XmlType(name = "", propOrder = {
+    "menuItems"
 })
-public class MenuItemsType {
+@XmlRootElement(name = "getMenuItems", namespace = "http://localhost:8080/restaurants")
+public class GetMenuItems {
 
-    protected List<MenuItemType> menuItem;
+    @XmlElement(namespace = "http://localhost:8080/restaurants", required = true)
+    protected List<MenuItems> menuItems;
 
     /**
-     * Gets the value of the menuItem property.
+     * Gets the value of the menuItems property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the menuItem property.
+     * This is why there is not a <CODE>set</CODE> method for the menuItems property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getMenuItem().add(newItem);
+     *    getMenuItems().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MenuItemType }
+     * {@link MenuItems }
      * 
      * 
      */
-    public List<MenuItemType> getMenuItem() {
-        if (menuItem == null) {
-            menuItem = new ArrayList<MenuItemType>();
+    public List<MenuItems> getMenuItems() {
+        if (menuItems == null) {
+            menuItems = new ArrayList<MenuItems>();
         }
-        return this.menuItem;
+        return this.menuItems;
     }
 
 }

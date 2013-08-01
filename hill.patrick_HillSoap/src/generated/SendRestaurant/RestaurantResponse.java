@@ -1,24 +1,22 @@
 
-package generatedRest;
+package generated.SendRestaurant;
 
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for restaurantsType complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="restaurantsType">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="restaurant" type="{}restaurantType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://localhost:8080/restaurants}restaurant" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,12 +26,14 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "restaurantsType", propOrder = {
+@XmlType(name = "", propOrder = {
     "restaurant"
 })
-public class RestaurantsType {
+@XmlRootElement(name = "restaurantResponse", namespace = "http://localhost:8080/restaurants")
+public class RestaurantResponse {
 
-    protected List<RestaurantType> restaurant;
+    @XmlElement(namespace = "http://localhost:8080/restaurants", required = true)
+    protected List<Restaurant> restaurant;
 
     /**
      * Gets the value of the restaurant property.
@@ -53,13 +53,13 @@ public class RestaurantsType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link RestaurantType }
+     * {@link Restaurant }
      * 
      * 
      */
-    public List<RestaurantType> getRestaurant() {
+    public List<Restaurant> getRestaurant() {
         if (restaurant == null) {
-            restaurant = new ArrayList<RestaurantType>();
+            restaurant = new ArrayList<Restaurant>();
         }
         return this.restaurant;
     }
