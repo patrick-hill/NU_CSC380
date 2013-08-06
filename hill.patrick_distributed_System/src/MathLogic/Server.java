@@ -12,6 +12,7 @@ import java.net.URL;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * User: Patrick
@@ -20,20 +21,21 @@ import java.util.List;
  */
 public class Server {
     public static void main(String[] args) {
-        int count = 0;
-
-        try {
-            ServerSocket ss = new ServerSocket(8080);
-
-            while (true) {
-                if(ss.isBound()) {
-                    count ++;
-                    new ObjectServer(ss.accept(), count).run();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        int count = 0;
+//
+//        try {
+//            ServerSocket ss = new ServerSocket(8080);
+//
+//            while (true) {
+//                if(ss.isBound()) {
+//                    count ++;
+//                    new ObjectServer(ss.accept(), count).run();
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        new ObjectServer();
     }
 
     protected static class ObjectServer implements Runnable {
@@ -41,7 +43,12 @@ public class Server {
         private BufferedReader br;
         private PrintWriter serverWrite;
         private OutputStream sOut;
+//        private Class x;
+        private Object parameterCon;
 
+        public ObjectServer() {
+            test();
+        }
         public ObjectServer(Socket s, int connectionCount) {
             this.s = s;
             System.out.println("Server #: "+connectionCount + " has been started.");
@@ -51,7 +58,6 @@ public class Server {
         public void run() {
             startConnection();
         }
-
         public void startConnection() {
             try {
                 sOut = s.getOutputStream();
@@ -60,18 +66,52 @@ public class Server {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             // Get Class
             Class c = clientClassLoading();
             // Get Constructor
-            Object con = clientConstructorLoading(c);
-            // Get Method to invoke
-            Method m = clientMethodLoading(c, con);
+            Object con = clientConstructorLoading(c);   // Class con has a Class parameter!!!!!
+            // Get Method to invoke and invoke it
+            Object returned = clientMethodLoading(c, con);
+            //Print out returned info
 
+        }
+        private void test(){
+            System.out.println("In the test method, about to automate all this shit@!!!!!!!");
+            // make the parameter class first, then the main constructor, then invoke
+            try {
+                Class c = Class.forName("MathLogic.MyParam");
+                Scanner s = new Scanner(System.in);
+                Class x = Class.forName(s.nextLine());
+                Class tmp[] = new Class[1];
+                tmp[0] = x;
+                Object con = c.getDeclaredConstructor(tmp).newInstance(69);
+//                Object con = c.getConstructor(x).newInstance(69);
+//                Object con = c.getConstructor(int.class).newInstance(69);
+                Method m = c.getDeclaredMethod("toString");
+                Object r = m.invoke(con);
+                System.out.println("Return from MyParam: " + r.toString());
+
+                Class c2 = Class.forName("MathLogic.MyClass");
+                Object con2 = c2.getConstructor().newInstance();
+                Method m2 = c2.getDeclaredMethod("test", con.getClass());
+                Object r2 = m2.invoke(con2, con);
+                System.out.println("Return from MyClass: " + r2.toString());
+
+
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         private Class clientClassLoading() {
             sendString("classPaths");
-
             return getClassInstance(readString());
         }
         private Object clientConstructorLoading(Class c) {
@@ -100,7 +140,19 @@ public class Server {
                 }
             }
             else {
-                con = clientConstructorParamTypeLoading(c, conParams);
+                // Parameter Class Constructor
+                Object paramCon = clientConstructorParamTypeLoading(c, conParams);
+                try {
+                    con = c.getConstructor(MyClass.class).newInstance(paramCon);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                }
             }
             return con;
         }
@@ -110,8 +162,8 @@ public class Server {
             Class conParamClasses[] = new Class[conParams];
             String names[] = readString().split(",");   // schema java.lang.String,java.lang.Integer
             for (int i=0;i<conParams;i++)
-                conParamClasses[i] = getClassInstance(names[i]);
-            // parameter types from client
+                conParamClasses[i] = getClassInstance(names[i]).getClass();
+            // parameter types from client                  // MyParam Class ....
             String paramTypes[] = readString().split(",");  // schema String:A String,Integer:666
             Object types[] = new Object[paramTypes.length];
             for (int i=0;i<paramTypes.length;i++) {         // Only allows Strings & Ints
@@ -139,8 +191,7 @@ public class Server {
             }
         return con;
         }
-
-        private Method clientMethodLoading(Class c, Object con) {
+        private Object clientMethodLoading(Class c, Object con) {
             sendString("methods");
 
             Method allMethods[] = c.getDeclaredMethods();
@@ -156,95 +207,72 @@ public class Server {
 
             // method parameters .....
             Class k[] = m.getParameterTypes();
-            Class methodParamClass = null;
-            if(k.length > 0)
-                methodParamClass = clientMethodParamLoading(k.length);
-            else {
-                try {
-                    toInvoke = c.getDeclaredMethod(allMethods[userMethod].getName(), methodParamClass);
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                }
+            Object methodParamClassConstructor = null;
+            if(k.length > 0) {
+                methodParamClassConstructor = clientMethodParamLoading(k.length);
+            }
+            try {
+                toInvoke = c.getDeclaredMethod(allMethods[userMethod].getName(), con.getClass());
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
             }
             // Run the method
-            Object mParams[] = new Object[1];
-            mParams[0] = methodParamClass;
+            Object toReturn = null;
             try {
-                toInvoke.invoke(con, mParams);          // this works just fine !!!!!
-            } catch (IllegalAccessException e) {        // but no return object ... wtf
+                if(methodParamClassConstructor !=  null)
+                    toReturn = toInvoke.invoke(con, methodParamClassConstructor.getClass());
+                else
+                    toReturn = toInvoke.invoke(con);
+
+            } catch (IllegalAccessException e) {        // but no return type
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
 
-            Object returnType = null;
+            return toReturn;
+        }
+        private Object clientMethodParamLoading(int methodParams) {
+            sendString("methodTypes");
+
+            Class x = getClassInstance(readString());
+            // Re-use of constructor parameter loading..... :(
+            Class methodParamClasses[] = new Class[methodParams];
+            sendString("conTypes");
+            String names[] = readString().split(",");   // schema java.lang.String,java.lang.Integer
+            for (int i=0;i<methodParams;i++)
+                methodParamClasses[i] = getClassInstance(names[i]);
+            Object types[] = new Object[methodParams];
+            String tmp[] = readString().split(",");
+            for (int i=0;i<methodParams;i++) {         // Only allows Strings & Ints
+                String t[] = tmp[i].split(":");
+                switch(t[0]) {
+                    case "Integer":
+                        types[i] = Integer.parseInt(t[1]);
+                        break;
+                    default:
+                        types[i] = t[1];
+                        break;
+                }
+            }
+            Object con = null;
             try {
-                returnType = toInvoke.invoke(con, mParams);
+                con = x.getConstructor(methodParamClasses).newInstance(types);
+//                con = x.getConstructor(String.class).newInstance(types);
+            } catch (InstantiationException e) {
+                e.printStackTrace();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
             }
-
-            if(returnType == null)
-                System.out.println("NULLLLLLLLLL");
-            else
-                System.out.println(" it works mofo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            sendString("final");
-            sendString("sean");
-            return m;
+            return con;
         }
-
-        private Class clientMethodParamLoading(int methodParams) {
-            sendString("methodTypes");
-
-            Class c = getClassInstance(readString());
-//            // Re-use of constructor parameter loading..... :(
-//            Class methodParamClasses[] = new Class[methodParams];
-//            String names[] = readString().split(",");   // schema java.lang.String,java.lang.Integer
-//            for (int i=0;i<methodParams;i++)
-//                methodParamClasses[i] = getClassInstance(names[i]);
-//            // parameter types from client
-//            String paramTypes[] = readString().split(",");  // schema String:A String,Integer:666
-//            Object types[] = new Object[paramTypes.length];
-//            for (int i=0;i<paramTypes.length;i++) {         // Only allows Strings & Ints
-//                String t[] = paramTypes[i].split(":");
-//                switch(t[0]) {
-//                    case "Integer":
-//                        types[i] = Integer.parseInt(t[1]);
-//                        break;
-//                    default:
-//                        types[i] = t[1];
-//                        break;
-//                }
-//            }
-//
-//            Object con = null;
-//            try {
-//                con = c.getConstructor(methodParamClasses).newInstance(types);
-//            } catch (InstantiationException e) {
-//                e.printStackTrace();
-//            } catch (IllegalAccessException e) {
-//                e.printStackTrace();
-//            } catch (InvocationTargetException e) {
-//                e.printStackTrace();
-//            } catch (NoSuchMethodException e) {
-//                e.printStackTrace();
-//            }
-//            // Get Class
-////            Class k = clientClassLoading();
-//            // Get Constructor
-//            Object kCon = clientConstructorLoading(c);
-            // Get Method to invoke
-//            Method kMethod = clientMethodLoading(c, kCon);
-
-//            Class methodParams = getClassInstance(readString());
-//            Object methodCon = clientConstructorLoading(methodParams);
-//          con = con = c.getConstructor(conParamClasses).newInstance(types);
-
-            return c;
+        private void sendReturn(Object r) {
+            sendString(r.toString());
         }
-
         private String readString() {
             String tmp = "";
             try {
@@ -266,47 +294,6 @@ public class Server {
                 e.printStackTrace();
             }
             return cla;
-        }
-        private String makeClassConstructorList(Class c) {
-            String conList = "";
-            for (Constructor con : c.getDeclaredConstructors())
-                conList += con.toString();
-            return conList;
-        }
-        private Object getClassConstructor(Class c) {
-            Object tmp = null;
-            try {
-                tmp = c.getConstructor().newInstance();
-            } catch (InstantiationException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
-            return tmp;
-        }
-        private Method[] getMethodsFromClass(Class c) {
-            try {
-                Object con = c.getConstructor().newInstance();
-            } catch (InstantiationException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
-            return c.getDeclaredMethods();
-        }
-        private String makeClassMethodList(Method[] classMethods) {
-            String methodList = "";
-            for(Method m : classMethods)
-                methodList += m + ", ";
-            return methodList;
         }
     }
 }

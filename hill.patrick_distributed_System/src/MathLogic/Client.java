@@ -31,6 +31,12 @@ public class Client {
             try {
                 connectToServer();
             } catch (IOException e) {
+                isRunning = false;
+                try {
+                    s.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
                 e.printStackTrace();
             }
         }
@@ -56,6 +62,8 @@ public class Client {
                     System.out.println("Enter the full classpath of the class...");
                     System.out.println("i.e. : MathLogic.MyClass");
                     String className = scan.nextLine();
+                    if(className.isEmpty())
+                        className = "MathLogic.MyClass";
                     sendString(className);  // no error handling !!!
                     break;
                 case "constructors":
@@ -63,15 +71,24 @@ public class Client {
                     String cons = readString();
                     System.out.println("Enter the index of the desired constructor...");
                     System.out.println(cons);
-                    sendString(scan.nextLine());
+                    String temp = scan.nextLine();
+                    if(temp.isEmpty())
+                        temp = "0";
+                    sendString(temp);
                     break;
                 case "conTypes":
                     System.out.println("Enter the constructor parameter types comma delimited...");
                     System.out.println("i.e. : java.lang.String,java.lang.Integer");
-                    sendString(scan.nextLine());
+                    temp = scan.nextLine();
+                    if(temp.isEmpty())
+                        temp = "java.lang.Integer";
+                    sendString(temp);
                     System.out.println("enter the parameter types and values as follows comma delimited....");
                     System.out.println("i.e.: String:A,Integer:66");
-                    sendString(scan.nextLine());
+                    temp = scan.nextLine();
+                    if(temp.isEmpty())
+                        temp = "MyParam String :)";
+                    sendString(temp);
                     break;
                 case "methods":
                     String methodList = readString();
@@ -79,12 +96,18 @@ public class Client {
                     System.out.println(methodList);
                     // Have user prompt for desired method...
                     System.out.println("Enter the # corresponding to the method you would like to invoke");
-                    sendString(scan.nextLine());
+                    temp = scan.nextLine();
+                    if(temp.isEmpty())
+                        temp = "0";
+                    sendString(temp);
                     break;
                 case "methodTypes":
                     System.out.println("Enter the full classpath of the parameter...");
                     System.out.println("i.e.: MathLogic.MyParam");
-                    sendString(scan.nextLine());
+                    temp = scan.nextLine();
+                    if(temp.isEmpty())
+                        temp = "MathLogic.MyParam";
+                    sendString(temp);
                     break;
                 case "final":
                     isRunning = false;
@@ -109,6 +132,7 @@ public class Client {
             try {
                 temp =  br.readLine();
             } catch (IOException e) {
+                isRunning = false;
                 e.printStackTrace();
             }
             return temp;

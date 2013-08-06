@@ -1,21 +1,18 @@
-package MathLogic;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Patrick
- * Date: 7/17/13
- * Time: 9:50 PM
+ * Date: 7/19/13
+ * Time: 8:04 AM
  * To change this template use File | Settings | File Templates.
  */
-public class MyParam {
-    int param;
+public class MyTestString {
+    private String name;
 
-    public MyParam(int param) {
-        this.param = param;
+    public MyTestString(String name) {
+        this.name = name;
     }
-
     @Override
     public String toString() {
-        return "" + param;
+        return name;
     }
 }
